@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -215,7 +216,31 @@ class _WaterIntakeAppHomePageState extends State<WaterIntakeAppHomePage> {
                     if (newValue != null) {
                       _setDailyGoal(newValue);
                     }
-                  })
+                  }),
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  goalReached ? null : _incrementWaterIntake();
+                },
+                child: const Text(
+                  "Add a glass of water",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _showResetConfirmationDialog();
+                },
+                child: const Text(
+                  "Reset",
+                  style: TextStyle(fontSize: 18),
+                ),
+              )
             ],
           ),
         ),
